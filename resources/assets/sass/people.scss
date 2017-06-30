@@ -50,15 +50,58 @@
       background-color: #f7fbfc;
     }
 
+    &.sorting {
+      background-color: #f6f8fa;
+      position: relative;
+      padding: 10px;
+
+      .options {
+        display: inline;
+        position: absolute;
+        right: 10px;
+
+        .dropdown-btn {
+          &:after {
+            content: "\f0d7";
+            font-family: FontAwesome;
+            margin-left: 5px;
+          }
+        }
+
+        .dropdown-item {
+          padding: 3px 20px 3px 10px;
+
+          &:before {
+            content: '\f00c';
+            font-family: FontAwesome;
+            margin-right: 5px;
+            color: #fff;
+          }
+
+          &:hover {
+            background-color: #0366d6;
+            color: #fff;
+          }
+
+          &.selected {
+            &:before {
+              color: #999;
+            }
+          }
+        }
+      }
+    }
+
     .avatar {
       background-color: #93521e;
       border-radius: 3px;
       color: #fff;
       display: inline-block;
-      font-size: 30px;
+      font-size: 15px;
       height: 43px;
       margin-right: 5px;
       padding-left: 5px;
+      padding-top: 10px;
       vertical-align: middle;
       width: 43px;
 
@@ -82,6 +125,15 @@
         color: #333;
       }
     }
+    .people-list-item-name {
+      display: inline-block;
+      margin-right: -9999px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: calc(100% - 198px);
+      overflow: hidden;
+      vertical-align: middle;
+    }
 
     .people-list-item-information {
       color: #999;
@@ -90,7 +142,7 @@
       text-align: right;
       position: relative;
     }
-    
+
     .people-list-item-information span {
       font-size: 0.8rem;
     }
@@ -157,11 +209,20 @@
       }
 
       h2 {
-        display: inline;
+        display: block;
         font-size: 24px;
         font-weight: 300;
         margin-bottom: 0;
         padding-left: 100px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 245px);
+        margin-right: -9999px;
+      }
+
+      @media (max-width: 480px) {
+        h2 { width: 100% }
       }
 
       .profile-detail-summary {
@@ -561,6 +622,12 @@
   }
 }
 
+.create-people {
+  .import {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+}
 
 // MOBILE
 @media (max-width: 480px) {
@@ -614,26 +681,6 @@
     .main-content {
       &.modal {
         margin-top: 0;
-
-        .dates {
-          .form-inline {
-            input[type="number"] {
-              display: inline;
-            }
-
-            input[type="date"] {
-              margin-left: 0;
-            }
-          }
-        }
-
-        .form-group.actions {
-          .btn {
-            display: block;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-        }
       }
 
       &.dashboard {
